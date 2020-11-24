@@ -214,5 +214,5 @@ if not insanceSegmentation:
             bpy.ops.object.delete()
 
 print("")
-print("Reached end of script 3. Check if correct masks were created. Thanks!")
+print("Reached end of script 3. Check if correct masks were created. Don't save Blender file while closing. Thanks!")
 print("")
