@@ -1,1 +1,1 @@
-# OASIS_Segmentation_Training_Data_Generation
+# OASIS Segmentation Training Data Generation
