@@ -9,14 +9,19 @@ Script one calculates the positions and sizes of islands and stores them as text
 5. maximumSize: Maximum size of an island
 
 ## Script 2 Info:
-Script two should be run after script one and renders out 'photorealistic' training data. No variables to decide here currently.
+Script two should be run after script one and renders out 'photorealistic' training data. Variables to decide here:
+1. res: Tuple; (x,y) size of rendered image
 
 ## Script 3 Info:
 Script three should be run after script one and two only after certain changes have been made to the environment. Here you can choose the type of masks you want to generate. Variables to decide here:
 1. instanceSegmentation: Change to false if you want separate masks for front and back and true if you want one mask per island.
+2. res: Tuple; (x,y) size of rendered mask (SHOULD BE SAME AS SCRIPT 2)
 
 ## Script 4 Info:
 Script 4 should be run after script one, two and three only. This will split the images and masks into test-train sets. It is designed to run outside of Blender due to certain required packages. No variables to decide here currently.
+
+## Script 5 Info:
+Script 5 should be run after script one, two, three and four only. This will add noise and normalise train/test images. This uses a yaml config file which can be changed. It also must be run in a specific way. No varibales to decide here currently.
 
 ## Stepwise Usage
 1. Open up the attached Blender file. It should be empty.
@@ -35,7 +40,17 @@ Script 4 should be run after script one, two and three only. This will split the
 14. Once all three scripts are run, check your directory for all output files.
 15. Close the Blender window WITHOUT saving.
 16. Now open a python environment in the repository directory and run script four.
-17. Nothing should have to be changed manually and a folder called data should contain your final result.
+17. Nothing should have to be changed manually and a folder called data should contain your split.
+18. Now open up the normalisingTemplate.yaml. You can edit this directly and run or create a copy with a different name for specific setting.
+19. Finally, run script 5 given direction below. End of data creation.
+
+Run script 5 as follows:
+
+    python script5_normalising_functions.py normalisingTemplate.yml
+    
+or
+
+    python script5_normalising_functions.py <path to .yml file>
 
 ![A rendered training image](https://github.com/chowravc/OASIS_Segmentation_Training_Data_Generation/blob/main/ReadMeFiles/0.png?raw=true)
 
@@ -48,3 +63,7 @@ Fig 2. Example instance segmented mask
 ![A non-instance segmented mask](https://github.com/chowravc/OASIS_Segmentation_Training_Data_Generation/blob/main/ReadMeFiles/1.png?raw=true)
 
 Fig 3. Example non instance segmented mask
+
+![A non-instance normalized image](https://github.com/chowravc/OASIS_Segmentation_Training_Data_Generation/blob/main/ReadMeFiles/04.png?raw=true)
+
+Fig 3. Example normalized image
