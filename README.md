@@ -15,6 +15,9 @@ Script two should be run after script one and renders out 'photorealistic' train
 Script three should be run after script one and two only after certain changes have been made to the environment. Here you can choose the type of masks you want to generate. Variables to decide here:
 1. instanceSegmentation: Change to false if you want separate masks for front and back and true if you want one mask per island.
 
+## Script 4 Info:
+Script 4 should be run after script one, two and three only. This will split the images and masks into test-train sets. It is designed to run outside of Blender due to certain required packages. No variables to decide here currently.
+
 ## Stepwise Usage
 1. Open up the attached Blender file. It should be empty.
 2. Open Window -> Toggle System Console. You can view the output of the Python scripts here.
@@ -31,10 +34,17 @@ Script three should be run after script one and two only after certain changes h
 13. Run script 3. Monitor progress with the System Console.
 14. Once all three scripts are run, check your directory for all output files.
 15. Close the Blender window WITHOUT saving.
+16. Now open a python environment in the repository directory and run script four.
+17. Nothing should have to be changed manually and a folder called data should contain your final result.
 
 ![A rendered training image](https://github.com/chowravc/OASIS_Segmentation_Training_Data_Generation/blob/main/ReadMeFiles/0.png?raw=true)
 
+Fig 1. Example rendered train image
 
 ![A instance segmented mask](https://github.com/chowravc/OASIS_Segmentation_Training_Data_Generation/blob/main/ReadMeFiles/Cap58.png?raw=true)
 
+Fig 2. Example instance segmented mask
+
 ![A non-instance segmented mask](https://github.com/chowravc/OASIS_Segmentation_Training_Data_Generation/blob/main/ReadMeFiles/1.png?raw=true)
+
+Fig 3. Example non instance segmented mask
