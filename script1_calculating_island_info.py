@@ -20,13 +20,8 @@ from lightUtils import *
 from materialUtils import *
 from intersectionCheck import *
 
-# Delete files before running
-if not os.path.isfile(os.getcwd() + '/angles/'):
-    os.mkdir(os.getcwd() + '/angles/')
-if not os.path.isfile(os.getcwd() + '/phis/'):
-    os.mkdir(os.getcwd() + '/phis/')
-if not os.path.isfile(os.getcwd() + '/thetas/'):
-    os.mkdir(os.getcwd() + '/thetas/')
+
+# CHANGE CODE HERE-----
 
 # Choose Number of 'images' to generate
 numberOfImages = 5
@@ -38,6 +33,17 @@ maximumIslands = 100
 # Choose minimum and maximum island size (anything between 0 and 10)
 minimumSize = 0
 maximumSize = 2
+
+# END OF CHANGE CODE-----
+
+
+# Delete files before running
+if not os.path.isfile(os.getcwd() + '/angles/'):
+    os.mkdir(os.getcwd() + '/angles/')
+if not os.path.isfile(os.getcwd() + '/phis/'):
+    os.mkdir(os.getcwd() + '/phis/')
+if not os.path.isfile(os.getcwd() + '/thetas/'):
+    os.mkdir(os.getcwd() + '/thetas/')
 
 # If you have already run this stopped after some images were created, this will choose where to continue
 startNum = len(g.glob("./thetas/*"))

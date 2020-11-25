@@ -20,6 +20,18 @@ from materialUtils import *
 from intersectionCheck import *
 
 
+# CHANGE CODE HERE-----
+
+# If true, separate masks for each island will be produced
+# If false, front and back masks will be produced
+insanceSegmentation = True
+
+# Resolution of rendered masks
+res = (256, 256)
+
+# END OF CHANGE CODE-----
+
+
 # Deleting wall used to add emission in last script
 bpy.data.objects["ChangeEmissionToRed100OnMe"].select_set(True)
 bpy.ops.object.delete()
@@ -29,10 +41,6 @@ bpy.ops.object.delete()
 
 # Finding out number of images to produce
 numberOfImages = len(g.glob("./angles/*"))
-
-# If true, separate masks for each island will be produced
-# If false, front and back masks will be produced
-insanceSegmentation = True
 
 # Creating separate masks for each island in each image
 if insanceSegmentation:
@@ -111,8 +119,8 @@ if insanceSegmentation:
             scene = bpy.data.scenes["Scene"]
 
             # Set render resolution
-            scene.render.resolution_x = 512
-            scene.render.resolution_y = 512
+            scene.render.resolution_x = res[0]
+            scene.render.resolution_y = res[1]
             scene.render.resolution_percentage = 100
             bpy.ops.render.render(write_still = True)
 
@@ -200,8 +208,8 @@ if not insanceSegmentation:
         scene = bpy.data.scenes["Scene"]
 
         # Set render resolution
-        scene.render.resolution_x = 512
-        scene.render.resolution_y = 512
+        scene.render.resolution_x = res[0]
+        scene.render.resolution_y = res[1]
         scene.render.resolution_percentage = 100
         bpy.ops.render.render(write_still = True)
 

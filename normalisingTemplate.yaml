@@ -1,0 +1,45 @@
+#Mask Template:
+
+submasks:
+    ext: 'png'
+
+    maskChoices: 5
+
+    rgbOutput: False
+
+    gauss:
+        use: True
+        params:
+            min: 0 #units of sigma
+            max: 1
+
+    smartNoise:
+        use: True
+        params:
+            min: 3
+            max: 7
+
+    sineNoise:
+        use: True
+        params:
+            min: 2
+            max: 3
+
+    gradientNoise:
+        use: True
+        params:
+            min: 2
+            max: 10
+
+    gridNoise:
+        use: True
+        params:
+            min: 2
+            max: 5
+
+    normalize:
+        use: True
+        params:
+            min: 110
+            max: 140
+            mean: 40

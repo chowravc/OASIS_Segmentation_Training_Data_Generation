@@ -20,6 +20,15 @@ from lightUtils import *
 from materialUtils import *
 from intersectionCheck import *
 
+
+# CHANGE CODE HERE-----
+
+# Choose render resolution here
+res = (256, 256)
+
+# END OF CHANGE CODE-----
+
+
 numberOfImages = len(g.glob("./angles/*"))
 
 startNum = len(g.glob("./images/*"))
@@ -117,8 +126,8 @@ for k in range(startNum, numberOfImages):
     scene = bpy.data.scenes["Scene"]
 
     # Set render resolution
-    scene.render.resolution_x = 512
-    scene.render.resolution_y = 512
+    scene.render.resolution_x = res[0]
+    scene.render.resolution_y = res[1]
     scene.render.resolution_percentage = 100
     bpy.ops.render.render(write_still = True)
 
