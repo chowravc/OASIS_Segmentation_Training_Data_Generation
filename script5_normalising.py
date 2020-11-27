@@ -49,6 +49,7 @@ if __name__ == '__main__':
 		sineRays = []
 		gradRays = []
 		gridRays = []
+		bloomRays = []
 
 		# Creating a nuber of noise masks
 		for i in range(cfg['submasks']['maskChoices']):
@@ -72,6 +73,11 @@ if __name__ == '__main__':
 			noiseCfg = cfg['submasks']['gridNoise']
 			if noiseCfg['use']:
 				gridRays.append(grid(array, random.uniform(noiseCfg['params']['min'], noiseCfg['params']['max'])))
+
+			# Creating bloomnoise mask
+			noiseCfg = cfg['submasks']['bloomNoise']
+			if noiseCfg['use']:
+				bloomRays.append(bloom(array, noiseCfg['params']['radius'], random.uniform(noiseCfg['params']['min'], noiseCfg['params']['max'])))
 
 		# Start adding noise to images
 		print("Started noising.")
@@ -102,13 +108,13 @@ if __name__ == '__main__':
 				# Adding gauss noise
 				if gauss['use']:
 					params = gauss['params']
-					imageToNoise = imageToNoise.filter(ImageFilter.GaussianBlur(radius = random.uniform(params['min'], params['max'])))
+					imageToNoise = imageToNoise.filter(ImageFilter.GaussianBlur(radius=random.uniform(params['min'], params['max'])))
 
 				# Converting image to array
 				imageToNoise = np.asarray(imageToNoise)
 
 				# Adding one of each type of noise
-				imageToNoise = makeNoisy(imageToNoise, [sNRays, sineRays, gradRays, gridRays])
+				imageToNoise = makeNoisy(imageToNoise, [sNRays, sineRays, gradRays, gridRays, bloomRays])
 
 				# Normalising image
 				if normals['use']:

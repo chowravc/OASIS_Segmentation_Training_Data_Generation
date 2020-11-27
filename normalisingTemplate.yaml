@@ -37,6 +37,13 @@ submasks:
             min: 2
             max: 5
 
+    bloomNoise:
+        use: True
+        params:
+            radius: 110
+            min: 50
+            max: 70
+
     normalize:
         use: True
         params:

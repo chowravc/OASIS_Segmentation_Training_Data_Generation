@@ -1,5 +1,6 @@
 # Importing required packages
 from PIL import Image, ImageOps, ImageFilter
+from scipy.ndimage.filters import gaussian_filter
 import numpy as np
 import glob
 import time
@@ -62,6 +63,18 @@ def grid(array, sigma):
 					gridNoise[i][j] = bb
 		gridNoise = normalize(gridNoise, sigma)
 		return gridNoise
+
+# Create bloom noise mask
+def bloom(array, radius, sigma):
+	arrayShape = array.shape
+	if len(arrayShape) == 2:
+
+		gridNoise = np.zeros(arrayShape)
+		for i in range(arrayShape[0]):
+			for j in range(arrayShape[1]):
+				if (i - arrayShape[0]/2)**2 + (j - arrayShape[1]/2)**2 <= radius**2:
+					gridNoise[i][j] = (random.random()*0.9+0.1)*(sigma/128)*np.sqrt(radius**2 - ((i - arrayShape[0]/2)**2 + (j - arrayShape[1]/2)**2))
+		return gaussian_filter(gridNoise, sigma=4)
 
 # Make image noisy, choosing one of each type of noise mask
 def makeNoisy(array, noises):
